@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html xmlns:layout="http://www.w3.org/1999/xhtml"
       layout:decorate="~{fragments/main_layout}"
@@ -10,11 +8,6 @@
     <h1>Open Bank Account</h1>
     <form th:action="@{/bankaccount}" method="POST">
 
-
-                <div class="form-group">
-                    <label for="inputId">Id</label>
-                    <input type="input" class="form-control" name="id" id="inputId">
-                </div>
         <div class="form-group">
             <label for="inputCustomer">Customer Id</label>
             <input type="text" class="form-control" name="customerId" id="inputCustomer">
@@ -49,7 +42,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="account : ${bankaccounts}">
+        <tr th:each="account : ${allBankAccounts}">
             <td th:text="${account.id}"></td>
             <td th:text="${account.customerId}"></td>
             <td th:text="${account.type}"></td>
@@ -58,74 +51,3 @@
         </tbody>
     </table>
 </div>
-
-
-<!--<!DOCTYPE html>-->
-<!--<html xmlns:layout="http://www.w3.org/1999/xhtml"-->
-<!--      layout:decorate="~{fragments/main_layout}"-->
-<!--      xmlns:th="https://www.thymeleaf.org">-->
-<!--<head>-->
-<!--    <meta charset="UTF-8">-->
-<!--    <title>Bank Account</title>-->
-<!--    <link th:rel="stylesheet" th:href="@{css/bootstrap.min.css}">-->
-<!--</head>-->
-<!--<body>-->
-
-<!--<div class="container" layout:fragment="content">-->
-<!--    <h1>Open Bank Account</h1>-->
-<!--    <form action="#" th:action="@{/bankAccount}" method="POST">-->
-<!--        <div class="form-group">-->
-<!--            <label for="inputId">Id</label>-->
-<!--            <input type="input" class="form-control" name="id" id="inputId">-->
-<!--        </div>-->
-
-<!--        <div class="form-group">-->
-<!--            <label for="inputCustomerID">customerId</label>-->
-<!--            <input type="input" class="form-control" name="customerId" id="inputCustomerID">-->
-<!--        </div>-->
-
-<!--        <div class="form-group">-->
-<!--            <label for="inputType">Type</label>-->
-<!--            <input type="input" class="form-control" name="type" id="inputType">-->
-<!--        </div>-->
-
-<!--        <div class="form-group">-->
-<!--            <label for="inputBalance">Balance</label>-->
-<!--            <input type="input" class="form-control" name="balance" id="inputBalance">-->
-<!--        </div>-->
-
-<!--&lt;!&ndash;        <div class="form-group">&ndash;&gt;-->
-<!--&lt;!&ndash;            <label for="inputPin">Pin</label>&ndash;&gt;-->
-<!--&lt;!&ndash;            <input type="password" class="form-control" name="pin" id="inputPin">&ndash;&gt;-->
-<!--&lt;!&ndash;        </div>&ndash;&gt;-->
-
-<!--        <div class="form-group">-->
-<!--            <input type="submit" class="btn btn-primary">-->
-<!--        </div>-->
-<!--    </form>-->
-
-<!--    <hr>-->
-<!--    <h1>All Bank Account</h1>-->
-<!--    <table class="table table-bordered">-->
-<!--        <thead class="thead-light">-->
-<!--        <tr>-->
-<!--            <th>Id</th>-->
-<!--            <th>customerID</th>-->
-<!--            <th>Type</th>-->
-<!--            <th>Balancee</th>-->
-<!--        </tr>-->
-<!--        </thead>-->
-<!--        <tbody>-->
-<!--        <tr th:each="bankAccount : ${allBankAccount}">-->
-<!--            <td th:text="${bankAccount.id}"></td>-->
-<!--            <td th:text="${bankAccount.customerId}"></td>-->
-<!--            <td th:text="${bankAccount.type}"></td>-->
-<!--            <td th:text="${bankAccount.balance}"></td>-->
-<!--        </tr>-->
-<!--        </tbody>-->
-<!--    </table>-->
-<!--</div>-->
-
-
-<!--</body>-->
-<!--</html>-->
