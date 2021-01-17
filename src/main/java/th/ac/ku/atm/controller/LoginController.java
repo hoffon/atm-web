@@ -23,24 +23,28 @@ public class LoginController {
         this.bankAccountService = bankAccountService;
     }
 
-    @GetMapping()
+    @GetMapping
     public String getLoginPage() {
-        return "login";
+        return "login";   // return login.html
     }
 
     @PostMapping
     public String login(@ModelAttribute Customer customer, Model model) {
-        Customer storedCustomer = customerService.checkPin(customer);
+        // 1. เอา id กับ pin ไปเช็คกับข้อมูล customer ที่มีอยู่ ว่าตรงกันบ้างไหม
+        Customer matchingCustomer = customerService.checkPin(customer);
 
-        if (storedCustomer != null) {
+        // 2. ถ้าตรง ส่งข้อมูล customer กลับไปแสดงผล
+        if (matchingCustomer != null) {
             model.addAttribute("customertitle",
-                    storedCustomer.getName() + " Bank Accounts");
+                    matchingCustomer.getName() + " Bank Accounts");
             model.addAttribute("bankaccounts",
                     bankAccountService.getCustomerBankAccount(customer.getId()));
             return "customeraccount";
         } else {
+            // 3. ถ้าไม่ตรง แจ้งว่าไม่มีข้อมูล customer นี้
             model.addAttribute("greeting", "Can't find customer");
             return "home";
         }
+
     }
 }
